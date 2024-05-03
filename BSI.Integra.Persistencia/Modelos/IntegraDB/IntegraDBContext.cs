@@ -26,11 +26,14 @@ namespace BSI.Integra.Persistencia.Modelos.IntegraDB
 
                 entity.Property(e => e.Id).HasComment("Clave Primaria de la Tabla");
 
+                entity.Property(e => e.AplicaMarcadorPredictivo).HasComment("Indica si el tab aplica o no para marcador predictivo");
+
                 entity.Property(e => e.CargarInformacionInicial).HasComment("Validadcion para cargar o no informacion de las actvidades en los Tabs de la Agenda");
 
                 entity.Property(e => e.CodigoAreaTrabajo)
                     .HasMaxLength(4)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasComment("Campo CodigoAreaTrabajo Que define a que área de trabajo pertene el tab");
 
                 entity.Property(e => e.Estado).HasComment("Estado del registro (creado o eliminado)");
 
@@ -50,6 +53,8 @@ namespace BSI.Integra.Persistencia.Modelos.IntegraDB
                     .HasComment("Nombre de los tabs de la Agenda");
 
                 entity.Property(e => e.Numeracion).HasComment("Indica el orden de priorizacion de los Tab");
+
+                entity.Property(e => e.Ponderacion).HasComment("Ponderacion del tab para el marcador predictivo");
 
                 entity.Property(e => e.RowVersion)
                     .IsRowVersion()

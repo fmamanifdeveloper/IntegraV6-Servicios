@@ -57,6 +57,17 @@ namespace BSI.Integra.Persistencia.Modelos.IntegraDB
         /// Id de migracion de la tabla
         /// </summary>
         public int? IdMigracion { get; set; }
+        /// <summary>
+        /// Campo CodigoAreaTrabajo Que define a que área de trabajo pertene el tab
+        /// </summary>
         public string? CodigoAreaTrabajo { get; set; }
+        /// <summary>
+        /// Ponderacion del tab para el marcador predictivo
+        /// </summary>
+        public int? Ponderacion { get; set; }
+        /// <summary>
+        /// Indica si el tab aplica o no para marcador predictivo
+        /// </summary>
+        public bool? AplicaMarcadorPredictivo { get; set; }
     }
 }

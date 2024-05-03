@@ -1,4 +1,7 @@
-﻿using BSI.Integra.Repositorio.Repository;
+﻿using BSI.Integra.Persistencia.Infrastructure;
+using BSI.Integra.Persistencia.Modelos.IntegraDB;
+using BSI.Integra.Repositorio.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace BSI.Integra.Repositorio.UnitOfWork
 {
