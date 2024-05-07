@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BSI.Integra.Repositorio\BSI.Integra.Repositorio.csproj" />
+    <Folder Include="Service\Implementacion\" />
+    <Folder Include="Service\Interfaz\" />
   </ItemGroup>
 
 </Project>

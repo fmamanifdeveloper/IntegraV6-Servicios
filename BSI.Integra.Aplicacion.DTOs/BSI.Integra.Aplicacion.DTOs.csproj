@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BSI.Integra.Aplicacion.Base\BSI.Integra.Aplicacion.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegraDB\Configuracion\" />
+    <Folder Include="IntegraDB\Finanzas\" />
+    <Folder Include="IntegraDB\GestionPersonas\" />
+    <Folder Include="IntegraDB\Marketing\" />
+    <Folder Include="IntegraDB\Operaciones\" />
+    <Folder Include="IntegraDB\Planificacion\" />
+  </ItemGroup>
+
+</Project>

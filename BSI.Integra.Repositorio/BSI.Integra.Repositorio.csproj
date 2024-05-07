@@ -5,6 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repository\Comericla\**" />
+    <EmbeddedResource Remove="Repository\Comericla\**" />
+    <None Remove="Repository\Comericla\**" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="Dapper" Version="2.0.123" />
@@ -15,6 +21,21 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\BSI.Integra.Aplicacion.Base\BSI.Integra.Aplicacion.Base.csproj" />
+	  <ProjectReference Include="..\BSI.Integra.Aplicacion.DTOs\BSI.Integra.Aplicacion.DTOs.csproj" />
 	  <ProjectReference Include="..\BSI.Integra.Persistencia\BSI.Integra.Persistencia.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Repository\Configuracion\Implementacion\" />
+	  <Folder Include="Repository\Configuracion\Interfaz\" />
+	  <Folder Include="Repository\Finanzas\Implementacion\" />
+	  <Folder Include="Repository\Finanzas\Interfaz\" />
+	  <Folder Include="Repository\GestionPersonas\Implementacion\" />
+	  <Folder Include="Repository\GestionPersonas\Interfaz\" />
+	  <Folder Include="Repository\Marketing\Implementacion\" />
+	  <Folder Include="Repository\Marketing\Interfaz\" />
+	  <Folder Include="Repository\Operaciones\Implementacion\" />
+	  <Folder Include="Repository\Operaciones\Interfaz\" />
+	  <Folder Include="Repository\Planificacion\Implementacion\" />
+	  <Folder Include="Repository\Planificacion\Interfaz\" />
 	</ItemGroup>
 </Project>

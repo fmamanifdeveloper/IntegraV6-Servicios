@@ -1,6 +1,10 @@
 ﻿using BSI.Integra.Persistencia.Infrastructure;
 using BSI.Integra.Persistencia.Modelos.IntegraDB;
 using BSI.Integra.Repositorio.Repository;
+using BSI.Integra.Repositorio.Repository.Auth.Implementacion;
+using BSI.Integra.Repositorio.Repository.Auth.Interfaz;
+using BSI.Integra.Repositorio.Repository.Comercial.Implementacion;
+using BSI.Integra.Repositorio.Repository.Comercial.Interfaz;
 using Microsoft.EntityFrameworkCore;
 
 namespace BSI.Integra.Repositorio.UnitOfWork
@@ -45,7 +49,6 @@ namespace BSI.Integra.Repositorio.UnitOfWork
         {
             try
             {
-                // Descartar los cambios no guardados
                 foreach (var entry in _context.ChangeTracker.Entries())
                 {
                     switch (entry.State)
@@ -91,7 +94,22 @@ namespace BSI.Integra.Repositorio.UnitOfWork
                 throw ex;
             }
         }
-
+        private IAuthRepository _authRepository;
+        IAuthRepository IUnitOfWork.AuthRepository
+        {
+            get
+            {
+                return _authRepository ?? new AuthRepository(_dapperRepository);
+            }
+        }
+        private IAgendaTabRepository _agendaTabRepository;
+        IAgendaTabRepository IUnitOfWork.AgendaTabRepository
+        {
+            get
+            {
+                return _agendaTabRepository ?? new AgendaTabRepository(_context, _connectionFactory, _dapperRepository);
+            }
+        }
 
     }
 }

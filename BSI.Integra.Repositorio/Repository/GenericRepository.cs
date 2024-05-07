@@ -12,7 +12,6 @@ namespace BSI.Integra.Repositorio.Repository
         private IntegraDBContext _context;
         internal IDapperRepository _dapperRepository;
         internal DbSet<TEntity> _entities;
-
         public GenericRepository(IntegraDBContext context, IConnectionFactory connectionFactory, IDapperRepository dapperRepository)
         {
             this._connectionFactory = connectionFactory;
@@ -22,7 +21,6 @@ namespace BSI.Integra.Repositorio.Repository
             _entities = context.Set<TEntity>();
             _dapperRepository = dapperRepository;
         }
-
         public bool Insert(TEntity entidad)
         {
             try
@@ -38,15 +36,14 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public bool InsertAsync(TEntity entidad)
+        public async Task<bool> InsertAsync(TEntity entidad)
         {
             try
             {
                 if (entidad == null)
                     throw new ArgumentNullException("La Entidad a insertar es nula");
 
-                _entities.AddAsync(entidad);
+                await _entities.AddAsync(entidad);
                 return true;
             }
             catch (Exception ex)
@@ -54,6 +51,22 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
+        public bool Insert(IEnumerable<TEntity> list)
+        {
+            try
+            {
+                if (list == null)
+                    throw new ArgumentNullException("El listado a Insertar es nulo");
+
+                _entities.AddRange(list);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool Update(TEntity entidad)
         {
             try
@@ -62,7 +75,6 @@ namespace BSI.Integra.Repositorio.Repository
                     throw new ArgumentNullException($"Entidad id: {entidad.Id} a actualizar es nula");
 
                 _entities.Update(entidad);
-
                 return true;
             }
             catch (Exception ex)
@@ -70,65 +82,14 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public bool SetState(TEntity entidad, EntityState state)
+        public bool Update(IEnumerable<TEntity> list)
         {
             try
             {
-                if (entidad == null)
-                    throw new ArgumentNullException($"Entidad id: {entidad.Id} a actualizar es nula");
-                _context.Entry(entidad).State = state;
+                if (list == null)
+                    throw new ArgumentNullException("El listado a Actualizar es nulo");
+                _entities.UpdateRange(list);
                 return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public bool UpdateEntity(TEntity entidad)
-        {
-            try
-            {
-                if (entidad == null)
-                    throw new ArgumentNullException($"Entidad id: {entidad.Id} a actualizar es nula");
-
-                _entities.Attach(entidad);
-                _context.Entry(entidad).State = EntityState.Modified;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public bool Detach(TEntity entidad)
-        {
-            try
-            {
-                if (entidad == null)
-                    throw new ArgumentNullException($"Entidad id: {entidad.Id} a actualizar es nula");
-                _context.Entry(entidad).State = EntityState.Detached;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void UpdateAlterno(TEntity entidad)
-        {
-            try
-            {
-                if (entidad == null)
-                    throw new ArgumentNullException($"Entidad id: {entidad.Id} a actualizar es nula");
-
-                // _entities =_context.Set<TEntity>();
-                _context.Entry(entidad).State = EntityState.Detached;// _entities.Update(entidad);
-
             }
             catch (Exception ex)
             {
@@ -163,39 +124,6 @@ namespace BSI.Integra.Repositorio.Repository
             }
         }
 
-
-        public bool Insert(IEnumerable<TEntity> list)
-        {
-            try
-            {
-                if (list == null)
-                    throw new ArgumentNullException("El listado a Insertar es nulo");
-
-                _entities.AddRange(list);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public bool Update(IEnumerable<TEntity> list)
-        {
-            try
-            {
-                if (list == null)
-                    throw new ArgumentNullException("El listado a Actualizar es nulo");
-                _entities.UpdateRange(list);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
         public bool Delete(IEnumerable<int> list, string nombreUsuario)
         {
             try
@@ -214,8 +142,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-
         public bool Exist(int id)
         {
             try
@@ -227,7 +153,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public bool Exist(Expression<Func<TEntity, bool>> filter)
         {
             try
@@ -239,8 +164,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-
         public TEntity FirstById(int id)
         {
             try
@@ -257,7 +180,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public TEntity FirstBy(Expression<Func<TEntity, bool>> filter)
         {
             try
@@ -269,7 +191,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public TType FirstBy<TType>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TType>> select)
             where TType : class
         {
@@ -282,20 +203,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-        public TType FirstByEstadoFalse<TType>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TType>> select)
-      where TType : class
-        {
-            try
-            {
-                return _entities.AsNoTracking().Where(where).Select(select).FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
         public IEnumerable<TEntity> GetBy(Expression<Func<TEntity, bool>> filter)
         {
             try
@@ -318,7 +225,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public ICollection<TType> GetBy<TType>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TType>> select) where TType : class
         {
             try
@@ -399,8 +305,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-
         public decimal GetMaxDecimal(Func<TEntity, decimal> columnSelector)
         {
             try
@@ -413,7 +317,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public int GetMaxInt(Func<TEntity, int> columnSelector)
         {
             try
@@ -426,7 +329,5 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-
     }
 }

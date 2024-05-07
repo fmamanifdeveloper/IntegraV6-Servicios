@@ -7,14 +7,36 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.29" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Base\BSI.Integra.Aplicacion.Base.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Comercial\BSI.Integra.Aplicacion.Comercial.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Configuracion\BSI.Integra.Aplicacion.Configuracion.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.DTOs\BSI.Integra.Aplicacion.DTOs.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Finanzas\BSI.Integra.Aplicacion.Finanzas.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.GestionPersonas\BSI.Integra.Aplicacion.GestionPersonas.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Marketing\BSI.Integra.Aplicacion.Marketing.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Operaciones\BSI.Integra.Aplicacion.Operaciones.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Planificacion\BSI.Integra.Aplicacion.Planificacion.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Servicios\BSI.Integra.Aplicacion.Servicios.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Transversal\BSI.Integra.Aplicacion.Transversal.csproj" />
+		<ProjectReference Include="..\BSI.Integra.Aplicacion.Validators\BSI.Integra.Aplicacion.Validators.csproj" />
 
 
 		<ProjectReference Include="..\BSI.Integra.Persistencia\BSI.Integra.Persistencia.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controllers\Marketing\" />
+	  <Folder Include="Controllers\Configuracion\" />
+	  <Folder Include="Controllers\Finanzas\" />
+	  <Folder Include="Controllers\GestionPersonas\" />
+	  <Folder Include="Controllers\Operaciones\" />
+	  <Folder Include="Controllers\Planificacion\" />
 	</ItemGroup>
 
 </Project>

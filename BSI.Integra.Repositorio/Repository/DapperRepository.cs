@@ -14,8 +14,7 @@ namespace BSI.Integra.Repositorio.Repository
         {
             _connectionFactory = connectionFactory;
         }
-
-        public string QueryDapper(string sql, object? parametros)
+        public string QueryDapper(string sql, object? parametros = null)
         {
             try
             {
@@ -32,7 +31,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-        public async Task<string> QueryDapperAsync(string sql, object? parametros)
+        public async Task<string> QueryDapperAsync(string sql, object? parametros = null)
         {
             try
             {
@@ -49,7 +48,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public string QueryDapper(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -68,7 +66,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public async Task<string> QueryDapperAsync(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -87,7 +84,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-        public string FirstOrDefault(string sql, object? parametros)
+        public string FirstOrDefault(string sql, object? parametros = null)
         {
             try
             {
@@ -104,8 +101,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public async Task<string> FirstOrDefaultAsync(string sql, object? parametros)
+        public async Task<string> FirstOrDefaultAsync(string sql, object? parametros = null)
         {
             try
             {
@@ -122,7 +118,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public string FirstOrDefault(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -141,7 +136,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public async Task<string> FirstOrDefaultAsync(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -160,8 +154,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public string QuerySPDapper(string sql, object? parametros)
+        public string QuerySPDapper(string sql, object? parametros = null)
         {
             try
             {
@@ -178,8 +171,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public async Task<string> QuerySPDapperAsync(string sql, object? parametros)
+        public async Task<string> QuerySPDapperAsync(string sql, object? parametros = null)
         {
             try
             {
@@ -196,7 +188,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public string QuerySPDapper(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -215,7 +206,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public async Task<string> QuerySPDapperAsync(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -234,8 +224,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public string QuerySPFirstOrDefault(string sql, object? parametros)
+        public string QuerySPFirstOrDefault(string sql, object? parametros = null)
         {
             try
             {
@@ -252,8 +241,7 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
-        public async Task<string> QuerySPFirstOrDefaultAsync(string sql, object? parametros)
+        public async Task<string> QuerySPFirstOrDefaultAsync(string sql, object? parametros = null)
         {
             try
             {
@@ -270,7 +258,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public string QuerySPFirstOrDefault(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -289,7 +276,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         public async Task<string> QuerySPFirstOrDefaultAsync(string sql, object? parametros, int timeoutMinutos)
         {
             try
@@ -308,7 +294,6 @@ namespace BSI.Integra.Repositorio.Repository
                 throw ex;
             }
         }
-
         private int ConvertirTimeOutSegundos(int timeoutMinutos)
         {
             return timeoutMinutos * 60;
