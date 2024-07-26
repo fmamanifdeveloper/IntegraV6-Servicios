@@ -25,8 +25,6 @@
 	  <ProjectReference Include="..\BSI.Integra.Persistencia\BSI.Integra.Persistencia.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Repository\Configuracion\Implementacion\" />
-	  <Folder Include="Repository\Configuracion\Interfaz\" />
 	  <Folder Include="Repository\Finanzas\Implementacion\" />
 	  <Folder Include="Repository\Finanzas\Interfaz\" />
 	  <Folder Include="Repository\GestionPersonas\Implementacion\" />

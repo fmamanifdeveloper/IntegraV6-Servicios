@@ -32,7 +32,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Controllers\Marketing\" />
-	  <Folder Include="Controllers\Configuracion\" />
 	  <Folder Include="Controllers\Finanzas\" />
 	  <Folder Include="Controllers\GestionPersonas\" />
 	  <Folder Include="Controllers\Operaciones\" />

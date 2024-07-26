@@ -5,6 +5,8 @@ using BSI.Integra.Repositorio.Repository.Auth.Implementacion;
 using BSI.Integra.Repositorio.Repository.Auth.Interfaz;
 using BSI.Integra.Repositorio.Repository.Comercial.Implementacion;
 using BSI.Integra.Repositorio.Repository.Comercial.Interfaz;
+using BSI.Integra.Repositorio.Repository.Configuracion.Implementacion;
+using BSI.Integra.Repositorio.Repository.Configuracion.Interfaz;
 using Microsoft.EntityFrameworkCore;
 
 namespace BSI.Integra.Repositorio.UnitOfWork
@@ -110,6 +112,13 @@ namespace BSI.Integra.Repositorio.UnitOfWork
                 return _agendaTabRepository ?? new AgendaTabRepository(_context, _connectionFactory, _dapperRepository);
             }
         }
-
+        private ICodigoPostalMigracionRepository _codigoPostalMigracionRepository;
+        ICodigoPostalMigracionRepository IUnitOfWork.CodigoPostalMigracionRepository
+        {
+            get
+            {
+                return _codigoPostalMigracionRepository ?? new CodigoPostalMigracionRepository(_dapperRepository);
+            }
+        }
     }
 }

@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IntegraDB\Configuracion\" />
     <Folder Include="IntegraDB\Finanzas\" />
     <Folder Include="IntegraDB\GestionPersonas\" />
     <Folder Include="IntegraDB\Marketing\" />
